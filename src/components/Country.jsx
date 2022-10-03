@@ -2,8 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const baseURL =
-  "https://raw.githubusercontent.com/iamspruce/search-filter-painate-reactjs/main/data/countries.json";
+const baseURL = "https://restcountries.com/v3.1/all";
 
 export default function Country() {
   const [error, setError] = useState(null);
@@ -26,10 +25,14 @@ export default function Country() {
         setError(error);
       });
   }, []);
+ 
 
 
 
-  
+
+
+
+
   const data = Object.values(items);
 
   function search(items) {
@@ -58,9 +61,17 @@ export default function Country() {
     return (
       <>
         <div className="wrapper">
+          <div class="mt-14 flex items-center py-4">
+            <div class="flex-grow h-px bg-gray-400"></div>
+            <span class="flex-shrink px-4 italic   text-white  flex justify-center items-center font-extrabold text-xl">
+              Find Your Country
+            </span>
+            <div class="flex-grow h-px bg-gray-400"></div>
+          </div>
+
           {/*** search for items  ***/}
 
-          <div className="mt-28 mb-10 flex flex-wrap  justify-between gap-2">
+          <div className="mt-16 mb-10 flex flex-wrap  justify-between gap-2">
             <div className="w-full mb-3 lg:mb-0 lg:w-3/6 ">
               <form>
                 <label
@@ -118,34 +129,52 @@ export default function Country() {
             </div>
           </div>
 
-          <ul className="card-grid">
-            {search(data).map((item) => (
-              <li>
-                <article className="card" key={item.alpha3Code}>
-                  <div className="card-image">
-                    <img src={item.flag.large} alt={item.name} />
-                  </div>
-                  <div className="card-content">
-                    <h2 className="card-name">{item.name}</h2>
-                    <ol className="card-list">
-                      <li>
-                        population: <span>{item.population}</span>
-                      </li>
-                      <li>
-                        Region: <span>{item.region}</span>
-                      </li>
-                      <li>
-                        Capital: <span>{item.capital}</span>
-                      </li>
-                      <li>
-                        language:
-                        <span></span>
-                      </li>
-                    </ol>
-                  </div>
-                </article>
-              </li>
-            ))}
+          <ul className="card-grid ">
+            {search(data)
+              .slice(0, 8)
+              .map((item) => (
+                <li>
+                  <article
+                    className="my-5 card transform transition duration-500 hover:scale-90"
+                    key={item.ccn3}
+                  >
+                    <div className="card-image ">
+                      <img
+                        src={item.flags.svg}
+                        alt={item.name.common}
+                        className=" "
+                      />
+                    </div>
+                    <div className="card-content">
+                      <h2 className="card-name   flex justify-center font-bold text-xl text-gray-900">
+                        {item.name.common}
+                      </h2>
+                      <ol className="card-list">
+                        <li>
+                          <span className="text-gray-500">population:</span>{" "}
+                          <span>{item.population}</span>
+                        </li>
+                        <li>
+                          <span className="text-gray-500">Region:</span>{" "}
+                          <span>{item.region}</span>
+                        </li>
+                        <li>
+                          <span className="text-gray-500">Capital:</span>
+                          <span> {item.capital}</span>
+                        </li>
+                        <li>
+                          <span className="text-gray-500">start Of Week:</span>
+                          <span> {item.startOfWeek}</span>
+                        </li>
+                      </ol>
+                    </div>
+                  </article>
+                </li>
+              ))}
+
+          
+
+
           </ul>
         </div>
       </>

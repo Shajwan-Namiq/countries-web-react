@@ -50,14 +50,11 @@ body {
 }
 
 .card {
+    border-image: 3px solid #031121;
     background-color: #e5e5e5;
     padding: 0px;
     box-shadow: #fca311;
-    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
-.card-image {
-    max-height: 150px;
+    height: 350px;
 }
 
 .card-content {
