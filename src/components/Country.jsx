@@ -61,12 +61,12 @@ export default function Country() {
     return (
       <>
         <div className="wrapper">
-          <div class="mt-14 flex items-center py-4">
-            <div class="flex-grow h-px bg-gray-400"></div>
-            <span class="flex-shrink px-4 italic   text-white  flex justify-center items-center font-extrabold text-xl">
+          <div className="mt-14 flex items-center py-4">
+            <div className="flex-grow h-px bg-gray-400"></div>
+            <span className="flex-shrink px-4 italic   text-white  flex justify-center items-center font-extrabold text-xl">
               Find Your Country
             </span>
-            <div class="flex-grow h-px bg-gray-400"></div>
+            <div className="flex-grow h-px bg-gray-400"></div>
           </div>
 
           {/*** search for items  ***/}
@@ -171,10 +171,6 @@ export default function Country() {
                   </article>
                 </li>
               ))}
-
-          
-
-
           </ul>
         </div>
       </>
